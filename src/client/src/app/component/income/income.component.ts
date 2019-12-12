@@ -9,16 +9,18 @@ import {IncomeService} from "../../service/income.service";
 export class IncomeComponent implements OnInit {
 
   private incomeSources: any = [];
+  totalIncome: number = 0;
 
   constructor(private incomeService: IncomeService) { }
 
   ngOnInit() {
     this.incomeService.getIncome().subscribe((income) => {
       this.incomeSources = income;
+      this.setTotalIncome();
     });
   }
 
-  applyIncome() {
+  saveIncome() {
     this.incomeService.saveIncome(this.incomeSources).subscribe(() => {
       console.log("saved");
     });
@@ -29,5 +31,13 @@ export class IncomeComponent implements OnInit {
       label: "New Income Source",
       dollarAmount: 0
     })
+  }
+
+  private setTotalIncome() {
+    let i = 0;
+    this.incomeSources.forEach((is) => {
+      i += is.dollarAmount;
+    });
+    this.totalIncome = i;
   }
 }

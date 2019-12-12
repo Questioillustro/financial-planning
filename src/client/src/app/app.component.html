@@ -3,5 +3,17 @@
     <span>Financial Planning</span>
   </mat-toolbar>
 
-  <app-income></app-income>
+  <div id="financial-col" fxLayout="column" fxLayoutGap="20px">
+    <div fxFlex="15">
+      <app-income></app-income>
+    </div>
+
+    <div fxFlex="15">
+      <app-expense></app-expense>
+    </div>
+
+    <div fxFlex="15">
+      <app-loan></app-loan>
+    </div>
+  </div>
 </div>

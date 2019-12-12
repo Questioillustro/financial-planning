@@ -11,12 +11,17 @@ import {MatButtonModule} from "@angular/material/button";
 import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {FlexModule} from "@angular/flex-layout";
+import { ExpenseComponent } from './component/expense/expense.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import { DebtComponent } from './component/debt/debt.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    IncomeComponent
+    IncomeComponent,
+    ExpenseComponent,
+    DebtComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,8 @@ import {FlexModule} from "@angular/flex-layout";
     MatButtonModule,
     FormsModule,
     MatInputModule,
-    FlexModule
+    FlexModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

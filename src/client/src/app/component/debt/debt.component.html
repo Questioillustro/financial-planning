@@ -1,0 +1,67 @@
+<div class="loan-panel">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="100">
+          <div fxFlex="30">
+            Debt
+          </div>
+          <div fxFlex="50">
+            Total Debt: ${{ totalDebt }}.00
+          </div>
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title></mat-card-title>
+        <mat-card-subtitle>Enter all loan information</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content class="income-card" fxLayout="column">
+        <div  *ngFor="let loan of loans" fxLayout="column" fxLayoutGap="10px">
+          <div>
+            <mat-label>
+              <span>{{loan.label}}</span>
+            </mat-label>
+          </div>
+
+          <div fxLayout="row" fxLayoutGap="10px">
+            <mat-form-field fxFlex="40">
+              <mat-label>
+                <span>Principle</span>
+              </mat-label>
+
+              <input matInput [(ngModel)]="loan.dollarAmount"
+                     type="number"
+                     required
+                     placeholder=""/>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="40">
+              <mat-label>
+                <span>APR</span>
+              </mat-label>
+
+              <input matInput [(ngModel)]="loan.apr"
+                     type="number"
+                     required
+                     placeholder=""/>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions align="start">
+        <button mat-button class="mat-primary" (click)="addLoan()">Add</button>
+        <button mat-button class="mat-primary" (click)="saveLoans()">Save</button>
+      </mat-card-actions>
+
+      <mat-card-footer>
+
+      </mat-card-footer>
+    </mat-card>
+  </mat-expansion-panel>
+</div>
+

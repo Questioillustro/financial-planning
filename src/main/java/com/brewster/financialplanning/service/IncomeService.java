@@ -15,7 +15,7 @@ public class IncomeService {
         this.incomeRepository = incomeRepository;
     }
 
-    public Iterable<IncomeEntity> getIncome() {
+    public Iterable<IncomeEntity> getIncomeSources() {
         return incomeRepository.findAll();
     }
 
