@@ -2,10 +2,9 @@ package com.brewster.financialplanning.controller;
 
 import com.brewster.financialplanning.data.IncomeEntity;
 import com.brewster.financialplanning.service.IncomeService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/brewster/finance")
@@ -21,5 +20,10 @@ public class FinanceController {
     @GetMapping("/income")
     public Iterable<IncomeEntity> getIncome() {
         return incomeService.getIncome();
+    }
+
+    @PutMapping("/income")
+    public void setIncome(@RequestBody List<IncomeEntity> incomeSources) {
+        incomeService.saveAll(incomeSources);
     }
 }

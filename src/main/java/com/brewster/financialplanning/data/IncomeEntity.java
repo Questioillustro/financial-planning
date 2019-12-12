@@ -16,5 +16,7 @@ public class IncomeEntity {
     @GeneratedValue
     private Long id;
 
-    private Long salary;
+    private Long dollarAmount;
+
+    private String label;
 }

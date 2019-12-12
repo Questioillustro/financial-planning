@@ -12,4 +12,8 @@ export class IncomeService {
   getIncome(): Observable<any> {
     return this.http.get('http://localhost:8080/brewster/finance/income');
   }
+
+  saveIncome(incomeSources: any) {
+    return this.http.put('http://localhost:8080/brewster/finance/income', incomeSources);
+  }
 }

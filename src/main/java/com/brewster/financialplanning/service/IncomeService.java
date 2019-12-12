@@ -23,4 +23,9 @@ public class IncomeService {
     public IncomeEntity save(IncomeEntity incomeEntity) {
         return incomeRepository.save(incomeEntity);
     }
+
+    @Transactional
+    public void saveAll(Iterable<IncomeEntity> incomeSources) {
+        this.incomeRepository.saveAll(incomeSources);
+    }
 }

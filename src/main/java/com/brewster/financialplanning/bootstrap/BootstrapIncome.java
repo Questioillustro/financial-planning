@@ -18,7 +18,15 @@ public class BootstrapIncome {
     @PostConstruct
     public void generateBaseline() {
         IncomeEntity incomeEntity = new IncomeEntity();
-        incomeEntity.setSalary(1000L);
+        incomeEntity.setDollarAmount(91500L);
+        incomeEntity.setLabel("Salary");
+
         incomeService.save(incomeEntity);
+
+        IncomeEntity incomeEntity2 = new IncomeEntity();
+        incomeEntity2.setDollarAmount(8400L);
+        incomeEntity2.setLabel("Rent");
+
+        incomeService.save(incomeEntity2);
     }
 }

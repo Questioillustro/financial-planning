@@ -8,14 +8,26 @@ import {IncomeService} from "../../service/income.service";
 })
 export class IncomeComponent implements OnInit {
 
-  private income: any = {};
+  private incomeSources: any = [];
 
   constructor(private incomeService: IncomeService) { }
 
   ngOnInit() {
     this.incomeService.getIncome().subscribe((income) => {
-      this.income = income;
+      this.incomeSources = income;
     });
   }
 
+  applyIncome() {
+    this.incomeService.saveIncome(this.incomeSources).subscribe(() => {
+      console.log("saved");
+    });
+  }
+
+  addIncome() {
+    this.incomeSources.push({
+      label: "New Income Source",
+      dollarAmount: 0
+    })
+  }
 }
