@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LoanService} from "../../service/loan.service";
 
 @Component({
@@ -7,37 +7,23 @@ import {LoanService} from "../../service/loan.service";
   styleUrls: ['./debt.component.css']
 })
 export class DebtComponent implements OnInit {
-  loans: any;
-  totalDebt: number = 0;
 
-  constructor(private loanService: LoanService) { }
+  @Input() loans: any = [];
+  @Input() totalDebt: number = 0;
+
+  @Output() addLoan = new EventEmitter();
+  @Output() saveLoans = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit() {
-    this.loanService.getLoans().subscribe((loans) => {
-      this.loans = loans;
-      this.setTotalDebt();
-    });
   }
 
-  addLoan() {
-    this.loans.push({
-      label: 'New Loan',
-      dollarAmount: 0,
-      apr: 1.0
-    });
+  add() {
+    this.addLoan.next();
   }
 
-  saveLoans() {
-    this.loanService.saveLoans(this.loans).subscribe(() => {
-      console.log("Loans Saved");
-    });
-  }
-
-  private setTotalDebt() {
-    let td = 0;
-    this.loans.forEach((l) => {
-      td += l.dollarAmount;
-    });
-    this.totalDebt = td;
+  save() {
+    this.saveLoans.next();
   }
 }

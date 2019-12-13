@@ -1,6 +1,7 @@
 package com.brewster.financialplanning.controller;
 
 import com.brewster.financialplanning.data.ExpenseEntity;
+import com.brewster.financialplanning.data.Expenses;
 import com.brewster.financialplanning.data.IncomeEntity;
 import com.brewster.financialplanning.data.LoanEntity;
 import com.brewster.financialplanning.service.ExpenseService;
@@ -38,8 +39,8 @@ public class FinanceController {
     }
 
     @GetMapping("/expense")
-    public Iterable<ExpenseEntity> getExpenses() {
-        return expenseService.getAllExpenses();
+    public Expenses getExpenses() {
+        return expenseService.getExpenses();
     }
 
     @PutMapping("/expense")

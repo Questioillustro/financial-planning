@@ -19,4 +19,6 @@ public class ExpenseEntity {
     private Long dollarAmount;
 
     private String label;
+
+    private String type;
 }

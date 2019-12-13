@@ -14,6 +14,9 @@ import {FlexModule} from "@angular/flex-layout";
 import { ExpenseComponent } from './component/expense/expense.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { DebtComponent } from './component/debt/debt.component';
+import { BudgetComponent } from './component/budget/budget.component';
+import { OverviewBasicComponent } from './component/overview-basic/overview-basic.component';
+import { FinanceComponent } from './component/finance/finance.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { DebtComponent } from './component/debt/debt.component';
     AppComponent,
     IncomeComponent,
     ExpenseComponent,
-    DebtComponent
+    DebtComponent,
+    BudgetComponent,
+    OverviewBasicComponent,
+    FinanceComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,13 @@
-<div class="expense-panel">
+<div class="budget-panel">
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
         <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="100">
           <div fxFlex="30">
-            Expenses
+            Budget
           </div>
           <div fxFlex="50">
-            Total Expenses: ${{ totalBills }}.00
+            Total Budget: ${{ totalBudget }}.00
           </div>
         </div>
       </mat-panel-title>
@@ -16,16 +16,16 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title></mat-card-title>
-        <mat-card-subtitle>Enter all expenses (monthly)</mat-card-subtitle>
+        <mat-card-subtitle>Enter all budget items (monthly)</mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content class="income-card" fxLayout="column" fxLayoutGap="10px">
-        <mat-form-field *ngFor="let expense of bills">
+        <mat-form-field *ngFor="let item of budget">
           <mat-label>
-            <span>{{expense.label}}</span>
+            <span>{{item.label}}</span>
           </mat-label>
 
-          <input matInput [(ngModel)]="expense.dollarAmount"
+          <input matInput [(ngModel)]="item.dollarAmount"
                  type="text"
                  required
                  placeholder=""/>
@@ -33,8 +33,8 @@
       </mat-card-content>
 
       <mat-card-actions align="start">
-        <button mat-button class="mat-primary" (click)="addExpense()">Add</button>
-        <button mat-button class="mat-primary" (click)="saveExpense()">Save</button>
+        <button mat-button class="mat-primary" (click)="add()">Add</button>
+        <button mat-button class="mat-primary" (click)="save()">Save</button>
       </mat-card-actions>
 
       <mat-card-footer>

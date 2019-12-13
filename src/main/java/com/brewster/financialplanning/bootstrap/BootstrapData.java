@@ -29,7 +29,52 @@ public class BootstrapData {
     public void generateBaseline() {
         createIncome();
         createExpenses();
+        createBudget();
         createLoans();
+    }
+
+    private void createBudget() {
+        ExpenseEntity expense = new ExpenseEntity();
+        expense.setLabel("Gas");
+        expense.setDollarAmount(100L);
+        expense.setType("BUDGET");
+
+        expenseService.save(expense);
+
+        ExpenseEntity expense2 = new ExpenseEntity();
+        expense2.setLabel("Food");
+        expense2.setDollarAmount(300L);
+        expense2.setType("BUDGET");
+
+        expenseService.save(expense2);
+
+        ExpenseEntity expense3 = new ExpenseEntity();
+        expense3.setLabel("Cats");
+        expense3.setDollarAmount(60L);
+        expense3.setType("BUDGET");
+
+        expenseService.save(expense3);
+
+        ExpenseEntity expense4 = new ExpenseEntity();
+        expense4.setLabel("Alcohol");
+        expense4.setDollarAmount(80L);
+        expense4.setType("BUDGET");
+
+        expenseService.save(expense4);
+
+        ExpenseEntity expense5 = new ExpenseEntity();
+        expense5.setLabel("Lunches");
+        expense5.setDollarAmount(133L);
+        expense5.setType("BUDGET");
+
+        expenseService.save(expense5);
+
+        ExpenseEntity expense6 = new ExpenseEntity();
+        expense6.setLabel("Cigarettes");
+        expense6.setDollarAmount(200L);
+        expense6.setType("BUDGET");
+
+        expenseService.save(expense6);
     }
 
     private void createLoans() {
@@ -52,36 +97,42 @@ public class BootstrapData {
         ExpenseEntity expense = new ExpenseEntity();
         expense.setLabel("Housing");
         expense.setDollarAmount(1765L);
+        expense.setType("BILL");
 
         expenseService.save(expense);
 
         ExpenseEntity expense2 = new ExpenseEntity();
         expense2.setLabel("Car Insurance");
         expense2.setDollarAmount(105L);
+        expense2.setType("BILL");
 
         expenseService.save(expense2);
 
         ExpenseEntity expense3 = new ExpenseEntity();
         expense3.setLabel("Phone");
         expense3.setDollarAmount(85L);
+        expense3.setType("BILL");
 
         expenseService.save(expense3);
 
         ExpenseEntity expense4 = new ExpenseEntity();
         expense4.setLabel("Utilities");
         expense4.setDollarAmount(225L);
+        expense4.setType("BILL");
 
         expenseService.save(expense4);
 
         ExpenseEntity expense5 = new ExpenseEntity();
         expense5.setLabel("Student Loan");
         expense5.setDollarAmount(665L);
+        expense5.setType("BILL");
 
         expenseService.save(expense5);
 
         ExpenseEntity expense6 = new ExpenseEntity();
         expense6.setLabel("Streaming Services");
         expense6.setDollarAmount(52L);
+        expense6.setType("BILL");
 
         expenseService.save(expense6);
     }

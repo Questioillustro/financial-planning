@@ -1,6 +1,7 @@
 package com.brewster.financialplanning.service;
 
 import com.brewster.financialplanning.data.ExpenseEntity;
+import com.brewster.financialplanning.data.Expenses;
 import com.brewster.financialplanning.repository.ExpenseRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,14 @@ public class ExpenseService {
         this.expenseRepository = expenseRepository;
     }
 
-    public Iterable<ExpenseEntity> getAllExpenses() {
-        return expenseRepository.findAll();
+    public Expenses getExpenses() {
+        Expenses expenses = new Expenses();
+        Iterable<ExpenseEntity> bills = expenseRepository.findAllByType("BILL");
+        expenses.setBills(bills);
+
+        Iterable<ExpenseEntity> budget = expenseRepository.findAllByType("BUDGET");
+        expenses.setBudget(budget);
+        return expenses;
     }
 
     public void save(ExpenseEntity expenseEntity) {

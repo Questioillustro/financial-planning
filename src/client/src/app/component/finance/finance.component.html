@@ -1,0 +1,35 @@
+<div id="finance" fxLayout="row" fxLayoutGap="50px">
+  <div id="financial-col" fxLayout="column" fxLayoutGap="20px">
+    <div>
+      <app-income [incomeSources]="incomeSources"
+                  [totalIncome]="totalIncome"
+                  (addIncome)="addIncome()"
+                  (saveIncome)="saveIncome()"></app-income>
+    </div>
+
+    <div>
+      <app-expense [bills]="bills"
+                   [totalBills]="totalBills"
+                   (addBill)="addBill()"
+                   (saveBills)="saveBills()"></app-expense>
+    </div>
+
+    <div>
+      <app-budget [budget]="budget"
+                  [totalBudget]="totalBudget"
+                  (addBudgetItem)="addBudgetItem()"
+                  (saveBudget)="saveBudget()"></app-budget>
+    </div>
+
+    <div>
+      <app-loan [loans]="loans"
+                [totalDebt]="totalDebt"
+                (addLoan)="addLoan()"
+                (saveLoans)="saveLoans()"></app-loan>
+    </div>
+  </div>
+
+  <div id="stats">
+    <app-overview-basic></app-overview-basic>
+  </div>
+</div>
