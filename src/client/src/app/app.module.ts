@@ -17,6 +17,8 @@ import { DebtComponent } from './component/debt/debt.component';
 import { BudgetComponent } from './component/budget/budget.component';
 import { OverviewBasicComponent } from './component/overview-basic/overview-basic.component';
 import { FinanceComponent } from './component/finance/finance.component';
+import {MatListModule} from "@angular/material/list";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { FinanceComponent } from './component/finance/finance.component';
     FormsModule,
     MatInputModule,
     FlexModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatListModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,7 +29,9 @@
     </div>
   </div>
 
-  <div id="stats">
-    <app-overview-basic></app-overview-basic>
+  <div id="stats" fxFlex="30">
+    <app-overview-basic [totalBills]="totalBills"
+                        [totalBudget]="totalBudget"
+                        [monthlyIncome]="monthlyIncome"></app-overview-basic>
   </div>
 </div>

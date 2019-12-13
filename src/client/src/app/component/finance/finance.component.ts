@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {LoanService} from "../../service/loan.service";
 import {ExpenseService} from "../../service/expense.service";
 import {IncomeService} from "../../service/income.service";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-finance',
@@ -16,6 +17,7 @@ export class FinanceComponent implements OnInit {
   private loans: any;
 
   private totalIncome: number;
+  private monthlyIncome: number;
   private totalBills: number;
   private totalBudget: number;
   private totalDebt: number;
@@ -61,6 +63,7 @@ export class FinanceComponent implements OnInit {
   private saveIncome() {
     this.incomeService.saveIncome(this.incomeSources).subscribe(() => {
       console.log("saved income");
+      this.loadIncome();
     });
   }
 
@@ -70,6 +73,7 @@ export class FinanceComponent implements OnInit {
       i += is.dollarAmount;
     });
     this.totalIncome = i;
+    this.monthlyIncome = _.round(i/12);
   }
 
   //
@@ -87,6 +91,7 @@ export class FinanceComponent implements OnInit {
   saveBills() {
     this.expenseService.saveExpenses(this.bills).subscribe(() => {
       console.log("expenses saved");
+      this.loadExpenses();
     });
   }
 
@@ -105,6 +110,7 @@ export class FinanceComponent implements OnInit {
   saveBudget() {
     this.expenseService.saveExpenses(this.budget).subscribe(() => {
       console.log("Budget saved");
+      this.loadExpenses();
     });
   }
 
@@ -130,6 +136,7 @@ export class FinanceComponent implements OnInit {
   private saveLoans() {
     this.loanService.saveLoans(this.loans).subscribe(() => {
       console.log("Loans Saved");
+      this.loadDebt();
     });
   }
 

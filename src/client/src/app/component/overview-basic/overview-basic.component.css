@@ -1,0 +1,25 @@
+
+.overview-list-item {
+  justify-content: end;
+  text-align: end;
+}
+
+.credit {
+  color: green;
+}
+
+.debit {
+  color: red;
+}
+
+.income-list {
+
+}
+
+.income-card {
+  margin-top: 20px;
+}
+
+.underline {
+  border-bottom: 1px solid black;
+}
