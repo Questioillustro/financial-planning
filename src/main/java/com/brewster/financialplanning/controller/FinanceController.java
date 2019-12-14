@@ -1,12 +1,8 @@
 package com.brewster.financialplanning.controller;
 
-import com.brewster.financialplanning.data.ExpenseEntity;
-import com.brewster.financialplanning.data.Expenses;
-import com.brewster.financialplanning.data.IncomeEntity;
-import com.brewster.financialplanning.data.LoanEntity;
-import com.brewster.financialplanning.service.ExpenseService;
-import com.brewster.financialplanning.service.IncomeService;
-import com.brewster.financialplanning.service.LoanService;
+import com.brewster.financialplanning.data.*;
+import com.brewster.financialplanning.service.AccountService;
+import com.brewster.financialplanning.service.CashFlowService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,45 +12,42 @@ import java.util.List;
 @CrossOrigin("http://localhost:4200")
 public class FinanceController {
 
-    private final IncomeService incomeService;
-    private final ExpenseService expenseService;
-    private final LoanService loanService;
+    private final CashFlowService cashFlowService;
+    private final AccountService accountService;
 
-    public FinanceController(final IncomeService incomeService,
-                             final ExpenseService expenseService,
-                             final LoanService loanService) {
-        this.incomeService = incomeService;
-        this.expenseService = expenseService;
-        this.loanService = loanService;
+    public FinanceController(final CashFlowService cashFlowService,
+                             final AccountService accountService) {
+        this.cashFlowService = cashFlowService;
+        this.accountService = accountService;
     }
 
-    @GetMapping("/income")
-    public Iterable<IncomeEntity> getIncome() {
-        return incomeService.getIncomeSources();
+    @GetMapping("/cashflow")
+    public CashFlow getCashFlow() {
+        return cashFlowService.getCashFlow();
     }
 
-    @PutMapping("/income")
-    public void saveIncomeSources(@RequestBody List<IncomeEntity> incomeSources) {
-        incomeService.saveAll(incomeSources);
+    @PutMapping("/cashflow")
+    public void saveCashFlow(@RequestBody List<CashFlowEntity> cashFlowEntities) {
+        cashFlowService.saveAll(cashFlowEntities);
     }
 
-    @GetMapping("/expense")
-    public Expenses getExpenses() {
-        return expenseService.getExpenses();
+    @DeleteMapping("/cashflow/{id}")
+    public void deleteCashFlow(@PathVariable Long id) {
+        cashFlowService.delete(id);
     }
 
-    @PutMapping("/expense")
-    public void saveExpenses(@RequestBody List<ExpenseEntity> expenseEntities) {
-        expenseService.saveAll(expenseEntities);
+    @GetMapping("/account")
+    public Accounts getAccounts() {
+        return accountService.getAccounts();
     }
 
-    @GetMapping("/loan")
-    public Iterable<LoanEntity> getLoans() {
-        return loanService.getLoans();
+    @PutMapping("/account")
+    public void saveAccounts(@RequestBody Iterable<AccountEntity> accounts) {
+        accountService.saveAccounts(accounts);
     }
 
-    @PutMapping("/loan")
-    public void saveLoans(@RequestBody List<LoanEntity> loans) {
-        loanService.saveLoans(loans);
+    @DeleteMapping("/account")
+    public void deleteAccount(@RequestBody AccountEntity account) {
+        accountService.deleteAccount(account);
     }
 }

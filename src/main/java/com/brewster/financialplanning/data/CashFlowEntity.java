@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @Entity
-public class IncomeEntity {
+public class CashFlowEntity {
 
     @Id
     @GeneratedValue
@@ -19,4 +19,8 @@ public class IncomeEntity {
     private Long dollarAmount;
 
     private String label;
+
+    private String debitType;
+
+    private String flowType;
 }

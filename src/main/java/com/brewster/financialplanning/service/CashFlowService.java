@@ -1,34 +1,41 @@
 package com.brewster.financialplanning.service;
 
-import com.brewster.financialplanning.data.ExpenseEntity;
-import com.brewster.financialplanning.data.Expenses;
-import com.brewster.financialplanning.repository.ExpenseRepository;
+import com.brewster.financialplanning.data.CashFlowEntity;
+import com.brewster.financialplanning.data.CashFlow;
+import com.brewster.financialplanning.repository.CashFlowRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExpenseService {
+public class CashFlowService {
 
-    private final ExpenseRepository expenseRepository;
+    private final CashFlowRepository cashFlowRepository;
 
-    public ExpenseService(final ExpenseRepository expenseRepository) {
-        this.expenseRepository = expenseRepository;
+    public CashFlowService(CashFlowRepository cashFlowRepository) {
+        this.cashFlowRepository = cashFlowRepository;
     }
 
-    public Expenses getExpenses() {
-        Expenses expenses = new Expenses();
-        Iterable<ExpenseEntity> bills = expenseRepository.findAllByType("BILL");
-        expenses.setBills(bills);
+    public CashFlow getCashFlow() {
+        CashFlow cashFlow = new CashFlow();
+        Iterable<CashFlowEntity> bills = cashFlowRepository.findAllByDebitType("BILL");
+        cashFlow.setBills(bills);
 
-        Iterable<ExpenseEntity> budget = expenseRepository.findAllByType("BUDGET");
-        expenses.setBudget(budget);
-        return expenses;
+        Iterable<CashFlowEntity> budget = cashFlowRepository.findAllByDebitType("BUDGET");
+        cashFlow.setBudget(budget);
+
+        Iterable<CashFlowEntity> income = cashFlowRepository.findAllByFlowType("CREDIT");
+        cashFlow.setIncome(income);
+        return cashFlow;
     }
 
-    public void save(ExpenseEntity expenseEntity) {
-        expenseRepository.save(expenseEntity);
+    public void save(CashFlowEntity cashFlowEntity) {
+        cashFlowRepository.save(cashFlowEntity);
     }
 
-    public void saveAll(Iterable<ExpenseEntity> expenseEntities) {
-        expenseRepository.saveAll(expenseEntities);
+    public void saveAll(Iterable<CashFlowEntity> cashFlowEntities) {
+        cashFlowRepository.saveAll(cashFlowEntities);
+    }
+
+    public void delete(Long id) {
+        cashFlowRepository.deleteById(id);
     }
 }
