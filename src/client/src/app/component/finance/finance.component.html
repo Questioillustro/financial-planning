@@ -1,24 +1,24 @@
-<div id="finance" fxLayout="row" fxLayoutGap="50px">
+<div id="finance" fxLayout="row" fxLayoutGap="50px" *ngIf="finances">
   <div id="financial-col" fxFlex="25" fxLayout="column" fxLayoutGap="20px">
     <div>
-      <app-income [incomeSources]="incomeSources"
-                  [totalIncome]="totalIncome"
+      <app-income [incomeSources]="finances.income"
+                  [totalIncome]="finances.totalIncome"
                   (addIncome)="addIncome()"
                   (deleteIncome)="deleteFinance($event)"
                   (saveIncome)="saveFinances($event)"></app-income>
     </div>
 
     <div>
-      <app-expense [bills]="bills"
-                   [totalBills]="totalBills"
+      <app-expense [bills]="finances.bills"
+                   [totalBills]="finances.totalBills"
                    (addBill)="addBill()"
                    (deleteBill)="deleteFinance($event)"
                    (saveBills)="saveFinances($event)"></app-expense>
     </div>
 
     <div>
-      <app-budget [budget]="budget"
-                  [totalBudget]="totalBudget"
+      <app-budget [budget]="finances.budget"
+                  [totalBudget]="finances.totalBudget"
                   (addBudgetItem)="addBudgetItem()"
                   (deleteBudgetItem)="deleteFinance($event)"
                   (saveBudget)="saveFinances($event)"></app-budget>
@@ -26,24 +26,24 @@
   </div>
 
   <div id="monthly-delta" fxFlex="15">
-    <app-overview-basic [totalBills]="totalBills"
-                        [totalBudget]="totalBudget"
-                        [monthlyDelta]="monthlyDelta"
-                        [monthlyIncome]="monthlyIncome"></app-overview-basic>
+    <app-overview-basic [totalBills]="finances.monthlyBills"
+                        [totalBudget]="finances.monthlyBudget"
+                        [monthlyDelta]="finances.monthlyDelta"
+                        [monthlyIncome]="finances.monthlyIncome"></app-overview-basic>
   </div>
 
   <div id="accounts-col" fxFlex="25" fxLayout="column" fxLayoutGap="20px">
     <div>
-      <app-account [accounts]="accounts"
-                   [totalAccountsValue]="totalAccountsValue"
+      <app-account [accounts]="finances.accounts"
+                   [totalAccountsValue]="finances.totalAccountsValue"
                    (addAccount)="addAccount()"
                    (deleteAccount)="deleteFinance($event)"
                    (saveAccounts)="saveFinances($event)"></app-account>
     </div>
 
     <div>
-      <app-loan [loans]="loans"
-                [totalDebt]="totalDebt"
+      <app-loan [loans]="finances.loans"
+                [totalDebt]="finances.totalDebt"
                 (addLoan)="addLoan()"
                 (deleteLoan)="deleteFinance($event)"
                 (saveLoans)="saveFinances($event)"></app-loan>

@@ -55,11 +55,44 @@ public class BootStrapBills {
         bill6.setAccrualAmount(52.0);
         bills.add(bill6);
 
+        FinanceEntity bill7 = new FinanceEntity();
+        bill7.setLabel("Charity");
+        bill7.setAccrualAmount(50.0);
+        bills.add(bill7);
+
+        FinanceEntity bill8 = new FinanceEntity();
+        bill8.setLabel("Amazon Prime");
+        bill8.setAccrualAmount(115.0);
+        bills.add(bill8);
+
+        FinanceEntity bill9 = new FinanceEntity();
+        bill9.setLabel("Water");
+        bill9.setAccrualAmount(30.0);
+        bills.add(bill9);
+
+        FinanceEntity bill10 = new FinanceEntity();
+        bill10.setLabel("VPN");
+        bill10.setAccrualAmount(35.0);
+        bills.add(bill10);
+
+        FinanceEntity bill11 = new FinanceEntity();
+        bill11.setLabel("Plex");
+        bill11.setAccrualAmount(30.0);
+        bills.add(bill11);
+
         bills.forEach((i) -> {
             i.setFinanceType(FINANCE_TYPE);
             i.setAccrualType(ACCRUAL_TYPE);
             i.setAccrualFrequency(ACCRUAL_FREQUENCY);
         });
+
+        bill8.setAccrualFrequency("ANNUALLY");
+
+        bill9.setAccrualFrequency("QUARTERLY");
+
+        bill10.setAccrualFrequency("ANNUALLY");
+
+        bill11.setAccrualFrequency("ANNUALLY");
 
         financeService.saveAll(bills);
     }

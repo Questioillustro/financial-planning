@@ -1,8 +1,18 @@
-<mat-label>
-  <span>{{item.label}}</span>
-</mat-label>
+<div fxLayout="row" fxLayoutGap="10px">
+  <div fxFlex="25">
+    <mat-form-field fxFlex="100">
+      <mat-label>
+        Description
+      </mat-label>
 
-<div fxLayout="row" fxLayoutGap="20px">
+      <input matInput
+             [(ngModel)]="item.label"
+             type="text"
+             required
+             placeholder="Label"/>
+    </mat-form-field>
+  </div>
+
   <div fxFlex="20" *ngIf="item.balance !== null">
     <mat-form-field fxFlex="100">
       <mat-label>
@@ -17,7 +27,7 @@
     </mat-form-field>
   </div>
 
-  <div fxFlex="20" *ngIf="item.accrualAmount !== null">
+  <div fxFlex="15">
     <mat-form-field fxFlex="100">
       <mat-label>
         <span>Accrual</span>
@@ -40,7 +50,9 @@
       <mat-select [(ngModel)]="item.accrualFrequency"
                   required>
         <mat-option value="WEEKLY">Weekly</mat-option>
+        <mat-option value="BI-WEEKLY">Bi-Weekly</mat-option>
         <mat-option value="MONTHLY">Monthly</mat-option>
+        <mat-option value="QUARTERLY">Quarterly</mat-option>
         <mat-option value="ANNUALLY">Annually</mat-option>
       </mat-select>
     </mat-form-field>

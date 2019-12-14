@@ -6,6 +6,8 @@ import com.brewster.financialplanning.data.Finances;
 import com.brewster.financialplanning.repository.FinanceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FinanceService {
     private final FinanceRepository financeRepository;
@@ -19,19 +21,19 @@ public class FinanceService {
 
     public Finances getFinances() {
         Finances finances = new Finances();
-        Iterable<FinanceEntity> bills = financeRepository.findAllByFinanceType("BILL");
+        List<FinanceEntity> bills = financeRepository.findAllByFinanceType("BILL");
         finances.setBills(bills);
 
-        Iterable<FinanceEntity> budget = financeRepository.findAllByFinanceType("BUDGET");
+        List<FinanceEntity> budget = financeRepository.findAllByFinanceType("BUDGET");
         finances.setBudget(budget);
 
-        Iterable<FinanceEntity> income = financeRepository.findAllByFinanceType("INCOME");
+        List<FinanceEntity> income = financeRepository.findAllByFinanceType("INCOME");
         finances.setIncome(income);
 
-        Iterable<FinanceEntity> accounts = financeRepository.findAllByFinanceType("ACCOUNT");
+        List<FinanceEntity> accounts = financeRepository.findAllByFinanceType("ACCOUNT");
         finances.setAccounts(accounts);
 
-        Iterable<FinanceEntity> loans = financeRepository.findAllByFinanceType("LOAN");
+        List<FinanceEntity> loans = financeRepository.findAllByFinanceType("LOAN");
         finances.setLoans(loans);
 
         cashFlowCalculations.setAggregates(finances);

@@ -8,19 +8,7 @@ import {FinanceService} from "../../service/finance.service";
 })
 export class FinanceComponent implements OnInit {
 
-  private incomeSources: any;
-  private bills: any;
-  private budget: any;
-  private loans: any;
-  private accounts: any;
-
-  private totalIncome: number;
-  private monthlyIncome: number;
-  private totalBills: number;
-  private totalBudget: number;
-  private totalDebt: number;
-  private totalAccountsValue: number;
-  private monthlyDelta: number;
+  private finances: any;
 
   constructor(private financeService: FinanceService) { }
 
@@ -30,23 +18,8 @@ export class FinanceComponent implements OnInit {
 
   private loadFinances() {
     this.financeService.getFinances().subscribe((finances) => {
-      this.bills = finances.bills;
-      this.totalBills = finances.totalBills;
-
-      this.budget = finances.budget;
-      this.totalBudget = finances.totalBudget;
-
-      this.incomeSources = finances.income;
-      this.totalIncome = finances.totalIncome;
-
-      this.monthlyIncome = finances.monthlyIncome;
-      this.monthlyDelta = finances.monthlyDelta;
-
-      this.accounts = finances.accounts;
-      this.totalAccountsValue = finances.totalAccountsValue
-
-      this.loans = finances.loans;
-      this.totalDebt = finances.totalDebt;
+      console.log("Finances loaded", finances);
+      this.finances = finances;
     });
   }
 
@@ -59,7 +32,7 @@ export class FinanceComponent implements OnInit {
 
   private deleteFinance(finance: any) {
     this.financeService.deleteFinance(finance.id).subscribe(() => {
-      console.log(finance, " deleted");
+      console.log("Finance deleted", finance);
       this.loadFinances();
     });
   }
@@ -69,13 +42,15 @@ export class FinanceComponent implements OnInit {
   //
 
   private addIncome() {
-    this.incomeSources.push({
+    this.finances.income.push({
       label: "New Income Source",
       accrualAmount: 0.0,
+      balance: null,
       financeType: 'INCOME',
-      accrualType: 'FLAT'
+      accrualType: 'FLAT',
+      accrualFrequency: 'WEEKLY'
     });
-    this.saveFinances(this.incomeSources);
+    this.saveFinances(this.finances.income);
   }
 
   //
@@ -83,13 +58,15 @@ export class FinanceComponent implements OnInit {
   //
 
   private addBill() {
-    this.bills.push({
-      label: 'New Expense',
+    this.finances.bills.push({
+      label: 'New Bill',
       accrualAmount: 0.0,
+      balance: null,
       financeType: 'BILL',
-      accrualType: 'FLAT'
+      accrualType: 'FLAT',
+      accrualFrequency: 'MONTHLY'
     });
-    this.saveFinances(this.bills);
+    this.saveFinances(this.finances.bills);
   }
 
   //
@@ -97,13 +74,15 @@ export class FinanceComponent implements OnInit {
   //
 
   private addBudgetItem() {
-    this.budget.push({
+    this.finances.budget.push({
       label: 'New Budget Item',
       accrualAmount: 0.0,
+      balance: null,
       financeType: 'BUDGET',
-      accrualType: 'FLAT'
+      accrualType: 'FLAT',
+      accrualFrequency: 'MONTHLY'
     });
-    this.saveFinances(this.budget);
+    this.saveFinances(this.finances.budget);
   }
 
   //
@@ -111,14 +90,15 @@ export class FinanceComponent implements OnInit {
   //
 
   private addLoan() {
-    this.loans.push({
+    this.finances.loans.push({
       label: 'New Loan',
       accrualAmount: 0.0,
       balance: 0.0,
       financeType: 'LOAN',
-      accrualType: 'PERCENT'
+      accrualType: 'PERCENT',
+      accrualFrequency: 'ANNUALLY'
     });
-    this.saveFinances(this.loans);
+    this.saveFinances(this.finances.loans);
   }
 
   //
@@ -126,13 +106,14 @@ export class FinanceComponent implements OnInit {
   //
 
   addAccount() {
-    this.accounts.push({
+    this.finances.accounts.push({
       label: 'New Account',
       accrualAmount: 0.0,
       balance: 0.0,
       financeType: 'ACCOUNT',
-      accrualType: 'PERCENT'
+      accrualType: 'PERCENT',
+      accrualFrequency: 'ANNUALLY'
     });
-    this.saveFinances(this.accounts);
+    this.saveFinances(this.finances.accounts);
   }
 }
