@@ -20,24 +20,27 @@
       </mat-card-header>
 
       <mat-card-content class="income-card" fxLayout="column" fxLayoutGap="10px">
-        <mat-form-field *ngFor="let expense of bills">
-          <mat-label>
-            <span>{{expense.label}}</span>
-          </mat-label>
+        <div class="cashlayout-item" fxLayout="row" fxLayoutGap="10px" *ngFor="let expense of bills">
+          <mat-form-field>
+            <mat-label>
+              <span>{{expense.label}}</span>
+            </mat-label>
 
-          <div fxLayout="row">
-            <div>
-              <input matInput [(ngModel)]="expense.dollarAmount"
-                     type="text"
-                     required
-                     placeholder=""/>
+            <div fxLayout="row">
+              <div fxFlex="40">
+                <input matInput [(ngModel)]="expense.dollarAmount"
+                       type="text"
+                       required
+                       placeholder=""/>
+              </div>
             </div>
-            <div>
-              <i class="fas fa-trash-alt"
-                 (click)="delete(expense)"></i>
-            </div>
+          </mat-form-field>
+
+          <div fxFlex="10" class="delete">
+            <i class="fas fa-trash-alt"
+               (click)="delete(expense)"></i>
           </div>
-        </mat-form-field>
+        </div>
       </mat-card-content>
 
       <mat-card-actions align="start">

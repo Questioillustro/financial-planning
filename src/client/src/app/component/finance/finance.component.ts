@@ -67,7 +67,8 @@ export class FinanceComponent implements OnInit {
       label: "New Income Source",
       dollarAmount: 0,
       flowType: 'CREDIT'
-    })
+    });
+    this.saveIncome();
   }
 
   private saveIncome() {
@@ -88,6 +89,7 @@ export class FinanceComponent implements OnInit {
       debitType: 'BILL',
       flowType: 'DEBIT'
     });
+    this.saveBills();
   }
 
   saveBills() {
@@ -107,7 +109,8 @@ export class FinanceComponent implements OnInit {
       dollarAmount: 0,
       debitType: 'BUDGET',
       flowType: 'DEBIT'
-    })
+    });
+    this.saveBudget();
   }
 
   saveBudget() {
@@ -128,6 +131,7 @@ export class FinanceComponent implements OnInit {
       apr: 1.0,
       type: 'DEBIT'
     });
+    this.saveLoans();
   }
 
   private saveLoans() {
@@ -157,6 +161,7 @@ export class FinanceComponent implements OnInit {
       apr: 0.0,
       type: 'CREDIT'
     });
+    this.saveAccounts();
   }
 
   private saveAccounts() {
