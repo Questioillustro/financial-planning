@@ -13,6 +13,7 @@ export class IncomeComponent implements OnInit {
 
   @Output() saveIncome = new EventEmitter();
   @Output() addIncome = new EventEmitter();
+  @Output() deleteIncome = new EventEmitter();
 
   constructor() { }
 
@@ -25,5 +26,9 @@ export class IncomeComponent implements OnInit {
 
   add() {
     this.addIncome.next();
+  }
+
+  delete(cashFlow: any) {
+    this.deleteIncome.next(cashFlow);
   }
 }

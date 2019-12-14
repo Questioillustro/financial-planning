@@ -4,6 +4,7 @@
       <app-income [incomeSources]="incomeSources"
                   [totalIncome]="totalIncome"
                   (addIncome)="addIncome()"
+                  (deleteIncome)="deleteCashFlow($event)"
                   (saveIncome)="saveIncome()"></app-income>
     </div>
 
@@ -11,6 +12,7 @@
       <app-expense [bills]="bills"
                    [totalBills]="totalBills"
                    (addBill)="addBill()"
+                   (deleteBill)="deleteCashFlow($event)"
                    (saveBills)="saveBills()"></app-expense>
     </div>
 

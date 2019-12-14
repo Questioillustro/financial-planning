@@ -16,4 +16,8 @@ export class CashFlowService {
   saveCashFlow(cashFlow: any) {
     return this.http.put('http://localhost:8080/brewster/finance/cashflow', cashFlow);
   }
+
+  deleteCashFlow(cashFlow: any) {
+    return this.http.delete(`http://localhost:8080/brewster/finance/cashflow/${cashFlow.id}`);
+  }
 }

@@ -51,6 +51,13 @@ export class FinanceComponent implements OnInit {
     });
   }
 
+  private deleteCashFlow(cashFlow: any) {
+    this.cashFlowService.deleteCashFlow(cashFlow).subscribe(() => {
+      console.log(cashFlow, " deleted");
+      this.loadCashFlow();
+    });
+  }
+
   //
   // INCOME
   //

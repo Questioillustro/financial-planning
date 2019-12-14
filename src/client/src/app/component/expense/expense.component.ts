@@ -12,6 +12,7 @@ export class ExpenseComponent implements OnInit {
 
   @Output() addBill = new EventEmitter();
   @Output() saveBills = new EventEmitter();
+  @Output() deleteBill = new EventEmitter();
 
   constructor() { }
 
@@ -24,5 +25,9 @@ export class ExpenseComponent implements OnInit {
 
   saveExpense() {
     this.saveBills.next();
+  }
+
+  delete(expense: any) {
+    this.deleteBill.next(expense);
   }
 }
