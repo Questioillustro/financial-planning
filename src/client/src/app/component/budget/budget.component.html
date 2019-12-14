@@ -1,46 +1,5 @@
-<div class="budget-panel">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="100">
-          <div fxFlex="30">
-            Budget
-          </div>
-          <div fxFlex="50">
-            Total Budget: <span class="debit">${{ totalBudget }}.00</span>
-          </div>
-        </div>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title></mat-card-title>
-        <mat-card-subtitle>Enter all budget items (monthly)</mat-card-subtitle>
-      </mat-card-header>
-
-      <mat-card-content class="income-card" fxLayout="column" fxLayoutGap="10px">
-        <mat-form-field *ngFor="let item of budget">
-          <mat-label>
-            <span>{{item.label}}</span>
-          </mat-label>
-
-          <input matInput [(ngModel)]="item.dollarAmount"
-                 type="text"
-                 required
-                 placeholder=""/>
-        </mat-form-field>
-      </mat-card-content>
-
-      <mat-card-actions align="start">
-        <button mat-button class="mat-primary" (click)="add()">Add</button>
-        <button mat-button class="mat-primary" (click)="save()">Save</button>
-      </mat-card-actions>
-
-      <mat-card-footer>
-
-      </mat-card-footer>
-    </mat-card>
-  </mat-expansion-panel>
-</div>
-
+<app-finance-item-list [items]="budget"
+                       [total]="totalBudget"
+                       [listTitle]="'Budget'"
+                       [totalLabel]="'Total Budget'"
+                       [subTitle]="'Enter all budget items.'"></app-finance-item-list>

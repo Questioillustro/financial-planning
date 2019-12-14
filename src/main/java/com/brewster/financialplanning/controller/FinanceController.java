@@ -3,6 +3,7 @@ package com.brewster.financialplanning.controller;
 import com.brewster.financialplanning.data.*;
 import com.brewster.financialplanning.service.AccountService;
 import com.brewster.financialplanning.service.CashFlowService;
+import com.brewster.financialplanning.service.FinanceService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,11 +15,29 @@ public class FinanceController {
 
     private final CashFlowService cashFlowService;
     private final AccountService accountService;
+    private final FinanceService financeService;
 
     public FinanceController(final CashFlowService cashFlowService,
-                             final AccountService accountService) {
+                             final AccountService accountService,
+                             final FinanceService financeService) {
         this.cashFlowService = cashFlowService;
         this.accountService = accountService;
+        this.financeService = financeService;
+    }
+
+    @GetMapping("/finance")
+    public Finances getFinances() {
+        return financeService.getFinances();
+    }
+
+    @PutMapping("/finance")
+    public void saveFinances(@RequestBody List<FinanceEntity> financeEntities) {
+        financeService.saveAll(financeEntities);
+    }
+
+    @DeleteMapping("/finance/{id}")
+    public void deleteFinance(@PathVariable Long id) {
+        financeService.delete(id);
     }
 
     @GetMapping("/cashflow")
