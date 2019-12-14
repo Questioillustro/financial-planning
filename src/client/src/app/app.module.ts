@@ -19,6 +19,7 @@ import { OverviewBasicComponent } from './component/overview-basic/overview-basi
 import { FinanceComponent } from './component/finance/finance.component';
 import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
+import { AccountComponent } from './component/account/account.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {MatTableModule} from "@angular/material/table";
     DebtComponent,
     BudgetComponent,
     OverviewBasicComponent,
-    FinanceComponent
+    FinanceComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

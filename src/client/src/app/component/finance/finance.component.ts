@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {LoanService} from "../../service/loan.service";
+import {Component, OnInit} from '@angular/core';
 import {ExpenseService} from "../../service/expense.service";
 import {IncomeService} from "../../service/income.service";
 import * as _ from 'lodash';
+import {AccountService} from "../../service/account.service";
 
 @Component({
   selector: 'app-finance',
@@ -15,21 +15,23 @@ export class FinanceComponent implements OnInit {
   private bills: any;
   private budget: any;
   private loans: any;
+  private accounts: any;
 
   private totalIncome: number;
   private monthlyIncome: number;
   private totalBills: number;
   private totalBudget: number;
   private totalDebt: number;
+  private totalAccountsValue: number;
 
-  constructor(private loanService: LoanService,
-              private expenseService: ExpenseService,
-              private incomeService: IncomeService) { }
+  constructor(private expenseService: ExpenseService,
+              private incomeService: IncomeService,
+              private accountService: AccountService) { }
 
   ngOnInit() {
     this.loadExpenses();
     this.loadIncome();
-    this.loadDebt();
+    this.loadAccounts();
   }
 
   loadExpenses() {
@@ -118,13 +120,6 @@ export class FinanceComponent implements OnInit {
   // DEBT
   //
 
-  private loadDebt() {
-    this.loanService.getLoans().subscribe((loans) => {
-      this.loans = loans;
-      this.setTotalDebt();
-    });
-  }
-
   private addLoan() {
     this.loans.push({
       label: 'New Loan',
@@ -133,18 +128,17 @@ export class FinanceComponent implements OnInit {
     });
   }
 
-  private saveLoans() {
-    this.loanService.saveLoans(this.loans).subscribe(() => {
-      console.log("Loans Saved");
-      this.loadDebt();
-    });
-  }
+  //
+  // ACCOUNTS
+  //
 
-  private setTotalDebt() {
-    let td = 0;
-    this.loans.forEach((l) => {
-      td += l.dollarAmount;
+  private loadAccounts() {
+    this.accountService.getAccounts().subscribe((accounts) => {
+      this.accounts = accounts.accounts;
+      this.totalAccountsValue = accounts.totalAccountsValue
+
+      this.loans = accounts.loans;
+      this.totalDebt = accounts.totalDebt;
     });
-    this.totalDebt = td;
   }
 }

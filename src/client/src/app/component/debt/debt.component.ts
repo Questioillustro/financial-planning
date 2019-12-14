@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {LoanService} from "../../service/loan.service";
 
 @Component({
   selector: 'app-loan',
