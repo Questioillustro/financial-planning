@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {IncomeService} from "../../service/income.service";
+import {CashFlowService} from "../../service/cash-flow.service";
 
 @Component({
   selector: 'app-income',

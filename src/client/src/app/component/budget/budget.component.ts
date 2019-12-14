@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ExpenseService} from "../../service/expense.service";
 
 @Component({
   selector: 'app-budget',

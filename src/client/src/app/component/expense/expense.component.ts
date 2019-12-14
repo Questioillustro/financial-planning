@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ExpenseService} from "../../service/expense.service";
 
 @Component({
   selector: 'app-expense',
@@ -14,7 +13,7 @@ export class ExpenseComponent implements OnInit {
   @Output() addBill = new EventEmitter();
   @Output() saveBills = new EventEmitter();
 
-  constructor(private expenseService: ExpenseService) { }
+  constructor() { }
 
   ngOnInit() {
   }

@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class OverviewBasicComponent implements OnInit {
 
+  @Input() monthlyDelta: number = 0;
   @Input() monthlyIncome: number = 0;
   @Input() totalBills: number = 0;
   @Input() totalBudget: number = 0;
@@ -21,14 +22,10 @@ export class OverviewBasicComponent implements OnInit {
   }
 
   isDebit() {
-    return this.getMonthlyDelta() < 0;
+    return this.monthlyDelta < 0;
   }
 
   getAbsoluteMonthlyDelta() {
-    return Math.abs(this.getMonthlyDelta());
-  }
-
-  getMonthlyDelta() {
-    return this.monthlyIncome - this.totalBills - this.totalBudget;
+    return Math.abs(this.monthlyDelta);
   }
 }

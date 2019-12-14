@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ExpenseService} from "../../service/expense.service";
-import {IncomeService} from "../../service/income.service";
-import * as _ from 'lodash';
+import {CashFlowService} from "../../service/cash-flow.service";
 import {AccountService} from "../../service/account.service";
 
 @Component({
@@ -23,24 +21,33 @@ export class FinanceComponent implements OnInit {
   private totalBudget: number;
   private totalDebt: number;
   private totalAccountsValue: number;
+  private monthlyDelta: number;
 
-  constructor(private expenseService: ExpenseService,
-              private incomeService: IncomeService,
+  constructor(private cashFlowService: CashFlowService,
               private accountService: AccountService) { }
 
   ngOnInit() {
-    this.loadExpenses();
-    this.loadIncome();
+    this.loadCashFlow();
     this.loadAccounts();
   }
 
-  loadExpenses() {
-    this.expenseService.getExpenses().subscribe((expenses) => {
-      this.bills = expenses.bills;
-      this.totalBills = expenses.totalBills;
+  //
+  // CASH FLOW
+  //
 
-      this.budget = expenses.budget;
-      this.totalBudget = expenses.totalBudget;
+  private loadCashFlow() {
+    this.cashFlowService.getCashFlow().subscribe((cashFlow) => {
+      this.bills = cashFlow.bills;
+      this.totalBills = cashFlow.totalBills;
+
+      this.budget = cashFlow.budget;
+      this.totalBudget = cashFlow.totalBudget;
+
+      this.incomeSources = cashFlow.income;
+      this.totalIncome = cashFlow.totalIncome;
+
+      this.monthlyIncome = cashFlow.monthlyIncome;
+      this.monthlyDelta = cashFlow.monthlyDelta;
     });
   }
 
@@ -48,34 +55,19 @@ export class FinanceComponent implements OnInit {
   // INCOME
   //
 
-  private loadIncome() {
-    this.incomeService.getIncome().subscribe((income) => {
-      this.incomeSources = income;
-      this.setTotalIncome();
-    });
-  }
-
   private addIncome() {
     this.incomeSources.push({
       label: "New Income Source",
-      dollarAmount: 0
+      dollarAmount: 0,
+      flowType: 'CREDIT'
     })
   }
 
   private saveIncome() {
-    this.incomeService.saveIncome(this.incomeSources).subscribe(() => {
+    this.cashFlowService.saveCashFlow(this.incomeSources).subscribe(() => {
       console.log("saved income");
-      this.loadIncome();
+      this.loadCashFlow();
     });
-  }
-
-  private setTotalIncome() {
-    let i = 0;
-    this.incomeSources.forEach((is) => {
-      i += is.dollarAmount;
-    });
-    this.totalIncome = i;
-    this.monthlyIncome = _.round(i/12);
   }
 
   //
@@ -86,14 +78,15 @@ export class FinanceComponent implements OnInit {
     this.bills.push({
       label: 'New Expense',
       dollarAmount: 0,
-      type: 'BILL'
+      debitType: 'BILL',
+      flowType: 'DEBIT'
     });
   }
 
   saveBills() {
-    this.expenseService.saveExpenses(this.bills).subscribe(() => {
+    this.cashFlowService.saveCashFlow(this.bills).subscribe(() => {
       console.log("expenses saved");
-      this.loadExpenses();
+      this.loadCashFlow();
     });
   }
 
@@ -105,14 +98,15 @@ export class FinanceComponent implements OnInit {
     this.budget.push({
       label: 'New Budget Item',
       dollarAmount: 0,
-      type: 'BUDGET'
+      debitType: 'BUDGET',
+      flowType: 'DEBIT'
     })
   }
 
   saveBudget() {
-    this.expenseService.saveExpenses(this.budget).subscribe(() => {
+    this.cashFlowService.saveCashFlow(this.budget).subscribe(() => {
       console.log("Budget saved");
-      this.loadExpenses();
+      this.loadCashFlow();
     });
   }
 
