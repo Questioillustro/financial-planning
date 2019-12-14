@@ -31,7 +31,9 @@
   <div id="accounts-col" fxFlex="25" fxLayout="column" fxLayoutGap="20px">
     <div>
       <app-account [accounts]="accounts"
-                   [totalAccountsValue]="totalAccountsValue"></app-account>
+                   [totalAccountsValue]="totalAccountsValue"
+                   (addAccount)="addAccount()"
+                   (saveAccounts)="saveAccounts()"></app-account>
     </div>
 
     <div>

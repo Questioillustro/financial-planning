@@ -124,8 +124,15 @@ export class FinanceComponent implements OnInit {
     this.loans.push({
       label: 'New Loan',
       dollarAmount: 0,
-      apr: 1.0
+      apr: 1.0,
+      type: 'DEBIT'
     });
+  }
+
+  private saveLoans() {
+    this.accountService.saveAccounts(this.loans).subscribe(() => {
+      console.log("Loans Saved");
+    })
   }
 
   //
@@ -139,6 +146,21 @@ export class FinanceComponent implements OnInit {
 
       this.loans = accounts.loans;
       this.totalDebt = accounts.totalDebt;
+    });
+  }
+
+  addAccount() {
+    this.accounts.push({
+      label: 'New Account',
+      dollarAmount: 0,
+      apr: 0.0,
+      type: 'CREDIT'
+    });
+  }
+
+  private saveAccounts() {
+    this.accountService.saveAccounts(this.accounts).subscribe(() => {
+      console.log("Accounts saved");
     });
   }
 }
