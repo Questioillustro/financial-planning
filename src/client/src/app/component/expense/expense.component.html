@@ -1,5 +1,8 @@
 <app-finance-item-list [items]="bills"
                        [total]="totalBills"
+                       (addItem)="add()"
+                       (saveItems)="save()"
+                       (deleteItem)="delete($event)"
                        [listTitle]="'Bills'"
                        [totalLabel]="'Total Bills'"
                        [subTitle]="'Enter all bills.'"></app-finance-item-list>

@@ -5,7 +5,7 @@
                   [totalIncome]="totalIncome"
                   (addIncome)="addIncome()"
                   (deleteIncome)="deleteFinance($event)"
-                  (saveIncome)="saveIncome()"></app-income>
+                  (saveIncome)="saveFinances($event)"></app-income>
     </div>
 
     <div>
@@ -13,7 +13,7 @@
                    [totalBills]="totalBills"
                    (addBill)="addBill()"
                    (deleteBill)="deleteFinance($event)"
-                   (saveBills)="saveBills()"></app-expense>
+                   (saveBills)="saveFinances($event)"></app-expense>
     </div>
 
     <div>
@@ -21,7 +21,7 @@
                   [totalBudget]="totalBudget"
                   (addBudgetItem)="addBudgetItem()"
                   (deleteBudgetItem)="deleteFinance($event)"
-                  (saveBudget)="saveBudget()"></app-budget>
+                  (saveBudget)="saveFinances($event)"></app-budget>
     </div>
   </div>
 
@@ -37,14 +37,14 @@
       <app-account [accounts]="accounts"
                    [totalAccountsValue]="totalAccountsValue"
                    (addAccount)="addAccount()"
-                   (saveAccounts)="saveAccounts()"></app-account>
+                   (saveAccounts)="saveFinances(accounts)"></app-account>
     </div>
 
     <div>
       <app-loan [loans]="loans"
                 [totalDebt]="totalDebt"
                 (addLoan)="addLoan()"
-                (saveLoans)="saveLoans()"></app-loan>
+                (saveLoans)="saveFinances(loans)"></app-loan>
     </div>
   </div>
 </div>

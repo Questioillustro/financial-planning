@@ -19,15 +19,15 @@ export class ExpenseComponent implements OnInit {
   ngOnInit() {
   }
 
-  addExpense() {
+  delete(expense: any) {
+    this.deleteBill.next(expense);
+  }
+
+  add() {
     this.addBill.next();
   }
 
-  saveExpense() {
-    this.saveBills.next();
-  }
-
-  delete(expense: any) {
-    this.deleteBill.next(expense);
+  save() {
+    this.saveBills.next(this.bills);
   }
 }

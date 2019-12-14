@@ -1,6 +1,8 @@
 <app-finance-item-list [items]="budget"
                        [total]="totalBudget"
+                       (addItem)="add()"
+                       (saveItems)="save()"
+                       (deleteItem)="delete($event)"
                        [listTitle]="'Budget'"
                        [totalLabel]="'Total Budget'"
-                       [subTitle]="'Enter all budget items.'"
-                       (deleteItem)="delete($event)"></app-finance-item-list>
+                       [subTitle]="'Enter all budget items.'"></app-finance-item-list>

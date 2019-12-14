@@ -24,7 +24,7 @@ export class BudgetComponent implements OnInit {
   }
 
   save() {
-    this.saveBudget.next();
+    this.saveBudget.next(this.budget);
   }
 
   delete(budget: any) {

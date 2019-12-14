@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CashFlowService} from "../../service/cash-flow.service";
 
 @Component({
   selector: 'app-income',
@@ -9,11 +8,11 @@ import {CashFlowService} from "../../service/cash-flow.service";
 export class IncomeComponent implements OnInit {
 
   @Input() private incomeSources: any = [];
-  @Input() totalIncome: number = 0;
+  @Input() private totalIncome: number = 0;
 
-  @Output() saveIncome = new EventEmitter();
-  @Output() addIncome = new EventEmitter();
-  @Output() deleteIncome = new EventEmitter();
+  @Output() private saveIncome = new EventEmitter();
+  @Output() private addIncome = new EventEmitter();
+  @Output() private deleteIncome = new EventEmitter();
 
   constructor() { }
 
@@ -21,14 +20,14 @@ export class IncomeComponent implements OnInit {
   }
 
   save() {
-    this.saveIncome.next();
+    this.saveIncome.next(this.incomeSources);
   }
 
   add() {
     this.addIncome.next();
   }
 
-  delete(cashFlow: any) {
-    this.deleteIncome.next(cashFlow);
+  delete(income: any) {
+    this.deleteIncome.next(income);
   }
 }

@@ -14,6 +14,8 @@ export class FinanceItemListComponent implements OnInit {
   @Input() items: any = [];
 
   @Output() deleteItem = new EventEmitter();
+  @Output() saveItems = new EventEmitter();
+  @Output() addItem = new EventEmitter();
 
   constructor() { }
 
@@ -25,10 +27,10 @@ export class FinanceItemListComponent implements OnInit {
   }
 
   add() {
-
+    this.addItem.next();
   }
 
   save() {
-
+    this.saveItems.next(this.items);
   }
 }

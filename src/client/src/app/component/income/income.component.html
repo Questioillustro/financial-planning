@@ -1,5 +1,8 @@
 <app-finance-item-list [items]="incomeSources"
                        [total]="totalIncome"
+                       (addItem)="add()"
+                       (saveItems)="save()"
+                       (deleteItem)="delete($event)"
                        [listTitle]="'Income Source'"
                        [totalLabel]="'Total Income'"
                        [subTitle]="'Enter all income sources.'"></app-finance-item-list>

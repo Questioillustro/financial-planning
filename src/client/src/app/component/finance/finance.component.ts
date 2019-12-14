@@ -28,10 +28,6 @@ export class FinanceComponent implements OnInit {
     this.loadFinances();
   }
 
-  //
-  // CASH FLOW
-  //
-
   private loadFinances() {
     this.financeService.getFinances().subscribe((finances) => {
       this.bills = finances.bills;
@@ -57,8 +53,8 @@ export class FinanceComponent implements OnInit {
   private saveFinances(finances: any) {
     this.financeService.saveFinances(finances).subscribe(() => {
       console.log("Finances saved", finances);
+      this.loadFinances();
     });
-    this.loadFinances();
   }
 
   private deleteFinance(finance: any) {
@@ -75,8 +71,9 @@ export class FinanceComponent implements OnInit {
   private addIncome() {
     this.incomeSources.push({
       label: "New Income Source",
-      dollarAmount: 0,
-      flowType: 'CREDIT'
+      accrualAmount: 0.0,
+      financeType: 'INCOME',
+      accrualType: 'FLAT'
     });
     this.saveFinances(this.incomeSources);
   }
@@ -88,9 +85,9 @@ export class FinanceComponent implements OnInit {
   private addBill() {
     this.bills.push({
       label: 'New Expense',
-      dollarAmount: 0,
-      debitType: 'BILL',
-      flowType: 'DEBIT'
+      accrualAmount: 0.0,
+      financeType: 'BILL',
+      accrualType: 'FLAT'
     });
     this.saveFinances(this.bills);
   }
@@ -102,9 +99,9 @@ export class FinanceComponent implements OnInit {
   private addBudgetItem() {
     this.budget.push({
       label: 'New Budget Item',
-      dollarAmount: 0,
-      debitType: 'BUDGET',
-      flowType: 'DEBIT'
+      accrualAmount: 0.0,
+      financeType: 'BUDGET',
+      accrualType: 'FLAT'
     });
     this.saveFinances(this.budget);
   }
@@ -116,9 +113,10 @@ export class FinanceComponent implements OnInit {
   private addLoan() {
     this.loans.push({
       label: 'New Loan',
-      dollarAmount: 0,
-      apr: 1.0,
-      type: 'DEBIT'
+      accrualAmount: 0.0,
+      balance: 0.0,
+      financeType: 'LOAN',
+      accrualType: 'PERCENT'
     });
     this.saveFinances(this.loans);
   }
@@ -130,9 +128,10 @@ export class FinanceComponent implements OnInit {
   addAccount() {
     this.accounts.push({
       label: 'New Account',
-      dollarAmount: 0,
-      apr: 0.0,
-      type: 'CREDIT'
+      accrualAmount: 0.0,
+      balance: 0.0,
+      financeType: 'ACCOUNT',
+      accrualType: 'PERCENT'
     });
     this.saveFinances(this.accounts);
   }
