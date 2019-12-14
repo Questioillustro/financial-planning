@@ -13,6 +13,7 @@ public class BootStrapBills {
 
     private String FINANCE_TYPE = "BILL";
     private String ACCRUAL_TYPE = "FLAT";
+    private String ACCRUAL_FREQUENCY = "MONTHLY";
 
     private final FinanceService financeService;
 
@@ -57,6 +58,7 @@ public class BootStrapBills {
         bills.forEach((i) -> {
             i.setFinanceType(FINANCE_TYPE);
             i.setAccrualType(ACCRUAL_TYPE);
+            i.setAccrualFrequency(ACCRUAL_FREQUENCY);
         });
 
         financeService.saveAll(bills);

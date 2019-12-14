@@ -13,6 +13,7 @@ public class BootstrapIncome {
 
     private String FINANCE_TYPE = "INCOME";
     private String ACCRUAL_TYPE = "FLAT";
+    private String ACCRUAL_FREQUENCY = "ANNUALLY";
 
     private final FinanceService financeService;
 
@@ -37,6 +38,7 @@ public class BootstrapIncome {
         income.forEach((i) -> {
             i.setFinanceType(FINANCE_TYPE);
             i.setAccrualType(ACCRUAL_TYPE);
+            i.setAccrualFrequency(ACCRUAL_FREQUENCY);
         });
 
         financeService.saveAll(income);

@@ -10,18 +10,18 @@ public class Finances {
     private Iterable<FinanceEntity> budget;
     private Iterable<FinanceEntity> income;
 
-    private Double totalBills = 0.0;
-    private Double totalBudget = 0.0;
-    private Double totalIncome = 0.0;
+    private double totalBills = 0.0;
+    private double totalBudget = 0.0;
+    private double totalIncome = 0.0;
 
-    private Double monthlyIncome = 0.0;
-    private Double monthlyDelta = 0.0;
+    private double monthlyIncome = 0.0;
+    private double monthlyDelta = 0.0;
 
     private Iterable<FinanceEntity> accounts;
     private Iterable<FinanceEntity> loans;
 
-    private Double totalAccountsValue = 0.0;
-    private Double totalDebt = 0.0;
+    private double totalAccountsValue = 0.0;
+    private double totalDebt = 0.0;
 
     public void setBills(Iterable<FinanceEntity> bills) {
         this.bills = bills;
@@ -39,15 +39,6 @@ public class Finances {
         this.monthlyDelta += totalBudget;
     }
 
-    public void setIncome(Iterable<FinanceEntity> income) {
-        this.income = income;
-
-        totalIncome = 0.0;
-        income.forEach((i) -> totalIncome += i.getAccrualAmount());
-        this.monthlyIncome += Math.round(totalIncome/12);
-        this.monthlyDelta += Math.round(totalIncome/12);
-    }
-
     public void setAccounts(Iterable<FinanceEntity> accounts) {
         this.accounts = accounts;
 
@@ -62,7 +53,7 @@ public class Finances {
 
         totalDebt = 0.0;
         this.loans.forEach((l) -> {
-            totalDebt += l.getBalance();
+            totalDebt -= l.getBalance();
         });
     }
 }

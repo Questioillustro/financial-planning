@@ -12,6 +12,7 @@ export class DebtComponent implements OnInit {
 
   @Output() addLoan = new EventEmitter();
   @Output() saveLoans = new EventEmitter();
+  @Output() deleteLoan = new EventEmitter();
 
   constructor() { }
 
@@ -23,6 +24,10 @@ export class DebtComponent implements OnInit {
   }
 
   save() {
-    this.saveLoans.next();
+    this.saveLoans.next(this.loans);
+  }
+
+  delete(loan: any) {
+    this.deleteLoan.next(loan);
   }
 }

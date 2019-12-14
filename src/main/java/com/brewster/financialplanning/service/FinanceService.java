@@ -1,5 +1,6 @@
 package com.brewster.financialplanning.service;
 
+import com.brewster.financialplanning.calc.CashFlowCalculations;
 import com.brewster.financialplanning.data.FinanceEntity;
 import com.brewster.financialplanning.data.Finances;
 import com.brewster.financialplanning.repository.FinanceRepository;
@@ -8,9 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class FinanceService {
     private final FinanceRepository financeRepository;
+    private final CashFlowCalculations cashFlowCalculations;
 
-    public FinanceService(FinanceRepository financeRepository) {
+    public FinanceService(final FinanceRepository financeRepository,
+                          final CashFlowCalculations cashFlowCalculations) {
         this.financeRepository = financeRepository;
+        this.cashFlowCalculations = cashFlowCalculations;
     }
 
     public Finances getFinances() {
@@ -29,6 +33,8 @@ public class FinanceService {
 
         Iterable<FinanceEntity> loans = financeRepository.findAllByFinanceType("LOAN");
         finances.setLoans(loans);
+
+        cashFlowCalculations.setAggregates(finances);
         return finances;
     }
 

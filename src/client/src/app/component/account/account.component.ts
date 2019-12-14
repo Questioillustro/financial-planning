@@ -12,6 +12,7 @@ export class AccountComponent implements OnInit {
 
   @Output() addAccount = new EventEmitter();
   @Output() saveAccounts = new EventEmitter();
+  @Output() deleteAccount = new EventEmitter();
 
   constructor() { }
 
@@ -23,6 +24,10 @@ export class AccountComponent implements OnInit {
   }
 
   save() {
-    this.saveAccounts.next();
+    this.saveAccounts.next(this.accounts);
+  }
+
+  delete(account: any) {
+    this.deleteAccount.next(account);
   }
 }

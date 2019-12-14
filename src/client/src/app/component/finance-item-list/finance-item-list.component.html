@@ -19,8 +19,8 @@
         <mat-card-subtitle>{{ subTitle }}</mat-card-subtitle>
       </mat-card-header>
 
-      <mat-card-content class="finance-item-card" fxLayout="column" fxLayoutGap="10px">
-        <div class="finance-item" fxLayout="row" fxLayoutGap="10px" *ngFor="let item of items">
+      <mat-card-content class="finance-item-card">
+        <div class="finance-item" fxLayout="column" *ngFor="let item of items">
           <app-finance-item [item]="item"
                             (deleteItem)="delete($event)"></app-finance-item>
         </div>

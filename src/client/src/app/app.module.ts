@@ -22,6 +22,7 @@ import {MatTableModule} from "@angular/material/table";
 import { AccountComponent } from './component/account/account.component';
 import { FinanceItemListComponent } from './component/finance-item-list/finance-item-list.component';
 import { FinanceItemComponent } from './component/finance-item-list/finance-item/finance-item.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { FinanceItemComponent } from './component/finance-item-list/finance-item
     FlexModule,
     MatExpansionModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -37,14 +37,16 @@
       <app-account [accounts]="accounts"
                    [totalAccountsValue]="totalAccountsValue"
                    (addAccount)="addAccount()"
-                   (saveAccounts)="saveFinances(accounts)"></app-account>
+                   (deleteAccount)="deleteFinance($event)"
+                   (saveAccounts)="saveFinances($event)"></app-account>
     </div>
 
     <div>
       <app-loan [loans]="loans"
                 [totalDebt]="totalDebt"
                 (addLoan)="addLoan()"
-                (saveLoans)="saveFinances(loans)"></app-loan>
+                (deleteLoan)="deleteFinance($event)"
+                (saveLoans)="saveFinances($event)"></app-loan>
     </div>
   </div>
 </div>

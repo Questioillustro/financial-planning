@@ -13,6 +13,7 @@ public class BootsrapAccounts {
 
     private String FINANCE_TYPE = "ACCOUNT";
     private String ACCRUAL_TYPE = "PERCENT";
+    private String ACCRUAL_FREQUENCY = "ANNUALLY";
 
     private final FinanceService financeService;
 
@@ -57,6 +58,7 @@ public class BootsrapAccounts {
         accounts.forEach((i) -> {
             i.setFinanceType(FINANCE_TYPE);
             i.setAccrualType(ACCRUAL_TYPE);
+            i.setAccrualFrequency(ACCRUAL_FREQUENCY);
         });
 
         financeService.saveAll(accounts);
