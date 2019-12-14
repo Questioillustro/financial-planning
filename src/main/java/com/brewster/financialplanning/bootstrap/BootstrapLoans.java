@@ -29,12 +29,14 @@ public class BootstrapLoans {
         loan.setLabel("Student Loans");
         loan.setBalance(49000.0);
         loan.setAccrualAmount(5.0);
+        loan.setPayment(665.0);
         loans.add(loan);
 
         FinanceEntity loan2 = new FinanceEntity();
         loan2.setLabel("Mortgage");
         loan2.setBalance(147000.0);
         loan2.setAccrualAmount(3.25);
+        loan2.setPayment(1080.0);
         loans.add(loan2);
 
         loans.forEach((i) -> {

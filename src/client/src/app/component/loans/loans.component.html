@@ -1,0 +1,8 @@
+<app-finance-item-list [items]="loans"
+                       [total]="totalLoans"
+                       (addItem)="add()"
+                       (saveItems)="save()"
+                       (deleteItem)="delete($event)"
+                       [listTitle]="'Loans'"
+                       [totalLabel]="'Total Debt'"
+                       [subTitle]="'Enter all debt.'"></app-finance-item-list>

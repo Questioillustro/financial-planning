@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FinanceService} from "../../service/finance.service";
+import {AmortizationService} from "../../service/amortization.service";
 
 @Component({
   selector: 'app-finance',
@@ -9,8 +10,10 @@ import {FinanceService} from "../../service/finance.service";
 export class FinanceComponent implements OnInit {
 
   private finances: any;
+  private amortizations: any = [];
 
-  constructor(private financeService: FinanceService) { }
+  constructor(private financeService: FinanceService,
+              private amortizationService: AmortizationService) { }
 
   ngOnInit() {
     this.loadFinances();
@@ -20,6 +23,7 @@ export class FinanceComponent implements OnInit {
     this.financeService.getFinances().subscribe((finances) => {
       console.log("Finances loaded", finances);
       this.finances = finances;
+      this.loadAmortization();
     });
   }
 
@@ -99,6 +103,15 @@ export class FinanceComponent implements OnInit {
       accrualFrequency: 'ANNUALLY'
     });
     this.saveFinances(this.finances.loans);
+  }
+
+  private loadAmortization() {
+    this.amortizations = [];
+    this.finances.loans.forEach((loan) => {
+      this.amortizationService.getAmortizationSchedule(loan.id).subscribe((schedule) => {
+        this.amortizations.push(schedule);
+      })
+    });
   }
 
   //

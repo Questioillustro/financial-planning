@@ -1,33 +1,20 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-loan',
+  selector: 'app-debt',
   templateUrl: './debt.component.html',
   styleUrls: ['./debt.component.css']
 })
 export class DebtComponent implements OnInit {
 
-  @Input() loans: any = [];
-  @Input() totalDebt: number = 0;
-
-  @Output() addLoan = new EventEmitter();
-  @Output() saveLoans = new EventEmitter();
-  @Output() deleteLoan = new EventEmitter();
+  @Input() amortizations: any = [];
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  add() {
-    this.addLoan.next();
-  }
+  update() {
 
-  save() {
-    this.saveLoans.next(this.loans);
-  }
-
-  delete(loan: any) {
-    this.deleteLoan.next(loan);
   }
 }

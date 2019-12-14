@@ -26,19 +26,20 @@ public class BootstrapIncome {
         List<FinanceEntity> income = new ArrayList<>();
 
         FinanceEntity financeEntity = new FinanceEntity();
-        financeEntity.setAccrualAmount(62270.0);
+        financeEntity.setAccrualAmount(2392.0);
         financeEntity.setLabel("Salary");
+        financeEntity.setAccrualFrequency("BI-WEEKLY");
         income.add(financeEntity);
 
         FinanceEntity financeEntity1 = new FinanceEntity();
-        financeEntity1.setAccrualAmount(8400.0);
+        financeEntity1.setAccrualAmount(700.0);
         financeEntity1.setLabel("Rent");
+        financeEntity1.setAccrualFrequency("MONTHLY");
         income.add(financeEntity1);
 
         income.forEach((i) -> {
             i.setFinanceType(FINANCE_TYPE);
             i.setAccrualType(ACCRUAL_TYPE);
-            i.setAccrualFrequency(ACCRUAL_FREQUENCY);
         });
 
         financeService.saveAll(income);

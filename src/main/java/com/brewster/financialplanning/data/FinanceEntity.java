@@ -22,6 +22,8 @@ public class FinanceEntity {
 
     private Double accrualAmount;
 
+    private Double payment;
+
     private String accrualType;
 
     private String financeType;

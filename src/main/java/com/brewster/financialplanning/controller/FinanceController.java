@@ -17,17 +17,17 @@ public class FinanceController {
         this.financeService = financeService;
     }
 
-    @GetMapping("/finance")
+    @GetMapping
     public Finances getFinances() {
         return financeService.getFinances();
     }
 
-    @PutMapping("/finance")
+    @PutMapping
     public void saveFinances(@RequestBody List<FinanceEntity> financeEntities) {
         financeService.saveAll(financeEntities);
     }
 
-    @DeleteMapping("/finance/{id}")
+    @DeleteMapping("/{id}")
     public void deleteFinance(@PathVariable Long id) {
         financeService.delete(id);
     }

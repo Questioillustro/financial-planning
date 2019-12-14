@@ -13,9 +13,9 @@ import {MatInputModule} from "@angular/material/input";
 import {FlexModule} from "@angular/flex-layout";
 import { ExpenseComponent } from './component/expense/expense.component';
 import {MatExpansionModule} from "@angular/material/expansion";
-import { DebtComponent } from './component/debt/debt.component';
+import { LoansComponent } from './component/loans/loans.component';
 import { BudgetComponent } from './component/budget/budget.component';
-import { OverviewBasicComponent } from './component/overview-basic/overview-basic.component';
+import { CashFlowComponent } from './component/cashflow/cash-flow.component';
 import { FinanceComponent } from './component/finance/finance.component';
 import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
@@ -23,6 +23,7 @@ import { AccountComponent } from './component/account/account.component';
 import { FinanceItemListComponent } from './component/finance-item-list/finance-item-list.component';
 import { FinanceItemComponent } from './component/finance-item-list/finance-item/finance-item.component';
 import {MatSelectModule} from "@angular/material/select";
+import { DebtComponent } from './component/debt/debt.component';
 
 
 @NgModule({
@@ -30,13 +31,14 @@ import {MatSelectModule} from "@angular/material/select";
     AppComponent,
     IncomeComponent,
     ExpenseComponent,
-    DebtComponent,
+    LoansComponent,
     BudgetComponent,
-    OverviewBasicComponent,
+    CashFlowComponent,
     FinanceComponent,
     AccountComponent,
     FinanceItemListComponent,
-    FinanceItemComponent
+    FinanceItemComponent,
+    DebtComponent
   ],
   imports: [
     BrowserModule,

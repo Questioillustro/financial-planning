@@ -1,16 +1,12 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      Monthly Delta
+      Monthly Cashflow
     </mat-card-title>
   </mat-card-header>
 
   <mat-card-content class="income-card" fxLayout="column" fxLayoutGap="10px">
     <div class="income-list" fxLayout="column" fxLayoutGap="10px">
-      <div>
-        Monthly Delta
-      </div>
-
       <div class="overview-list-item">
         <div fxLayout="row">
           <div fxFlex="50" fxLayoutAlign="start">
@@ -52,9 +48,9 @@
           <div fxFlex="50" fxLayoutAlign="start">
 
           </div>
-          <div fxFlex="50" [ngClass]="isDebitOrCredit()">
-            <span *ngIf="isDebit()">- </span> <i class="fas fa-dollar-sign"></i>
-            {{ getAbsoluteMonthlyDelta() }}
+          <div fxFlex="50" [ngClass]="monthlyDelta > 0 ? 'credit' : 'debit'">
+            <i class="fas fa-dollar-sign"></i>
+            {{ monthlyDelta }}
           </div>
         </div>
       </div>

@@ -25,11 +25,15 @@
     </div>
   </div>
 
-  <div id="monthly-delta" fxFlex="15">
-    <app-overview-basic [totalBills]="finances.monthlyBills"
-                        [totalBudget]="finances.monthlyBudget"
-                        [monthlyDelta]="finances.monthlyDelta"
-                        [monthlyIncome]="finances.monthlyIncome"></app-overview-basic>
+  <div id="monthly-cashflow" fxFlex="10">
+    <app-cashflow [totalBills]="finances.monthlyBills"
+                  [totalBudget]="finances.monthlyBudget"
+                  [monthlyDelta]="finances.monthlyDelta"
+                  [monthlyIncome]="finances.monthlyIncome"></app-cashflow>
+  </div>
+
+  <div id="debt-management" fxFlex="20">
+    <app-debt [amortizations]="amortizations"></app-debt>
   </div>
 
   <div id="accounts-col" fxFlex="25" fxLayout="column" fxLayoutGap="20px">
@@ -43,7 +47,7 @@
 
     <div>
       <app-loan [loans]="finances.loans"
-                [totalDebt]="finances.totalDebt"
+                [totalLoans]="finances.totalDebt"
                 (addLoan)="addLoan()"
                 (deleteLoan)="deleteFinance($event)"
                 (saveLoans)="saveFinances($event)"></app-loan>

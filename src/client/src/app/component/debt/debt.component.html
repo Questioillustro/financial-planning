@@ -1,8 +1,42 @@
-<app-finance-item-list [items]="loans"
-                       [total]="totalDebt"
-                       (addItem)="add()"
-                       (saveItems)="save()"
-                       (deleteItem)="delete($event)"
-                       [listTitle]="'Loans'"
-                       [totalLabel]="'Total Debt'"
-                       [subTitle]="'Enter all debt.'"></app-finance-item-list>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Debt Management</mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="debt-loan-list" *ngFor="let amortization of amortizations" fxLayout="row" fxLayoutGap="10px">
+      <div class="debt-label" fxFlex="25" fxLayoutAlign="start center">
+        {{ amortization.loan.label }}
+      </div>
+
+      <div fxFlex="15">
+        <mat-form-field fxFlex="100">
+          <mat-label>
+            <span>Payment</span>
+          </mat-label>
+
+          <input matInput
+                 [(ngModel)]="amortization.loan.payment"
+                 type="number"
+                 required
+                 placeholder="Accrual Amount"/>
+        </mat-form-field>
+      </div>
+
+      <div class="debt-final-payment">
+        <mat-label>
+          Payoff Date
+        </mat-label>
+        {{ amortization.payoffDate }}
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions align="start">
+    <button mat-button class="mat-primary" (click)="update()">Update</button>
+  </mat-card-actions>
+
+  <mat-card-footer>
+  </mat-card-footer>
+</mat-card>
