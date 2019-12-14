@@ -2,4 +2,5 @@
                        [total]="totalBudget"
                        [listTitle]="'Budget'"
                        [totalLabel]="'Total Budget'"
-                       [subTitle]="'Enter all budget items.'"></app-finance-item-list>
+                       [subTitle]="'Enter all budget items.'"
+                       (deleteItem)="delete($event)"></app-finance-item-list>

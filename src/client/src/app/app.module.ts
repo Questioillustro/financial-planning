@@ -21,6 +21,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
 import { AccountComponent } from './component/account/account.component';
 import { FinanceItemListComponent } from './component/finance-item-list/finance-item-list.component';
+import { FinanceItemComponent } from './component/finance-item-list/finance-item/finance-item.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FinanceItemListComponent } from './component/finance-item-list/finance-
     OverviewBasicComponent,
     FinanceComponent,
     AccountComponent,
-    FinanceItemListComponent
+    FinanceItemListComponent,
+    FinanceItemComponent
   ],
   imports: [
     BrowserModule,

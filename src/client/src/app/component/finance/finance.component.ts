@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CashFlowService} from "../../service/cash-flow.service";
 import {FinanceService} from "../../service/finance.service";
 
 @Component({
@@ -63,7 +62,7 @@ export class FinanceComponent implements OnInit {
   }
 
   private deleteFinance(finance: any) {
-    this.financeService.deleteFinance(finance).subscribe(() => {
+    this.financeService.deleteFinance(finance.id).subscribe(() => {
       console.log(finance, " deleted");
       this.loadFinances();
     });

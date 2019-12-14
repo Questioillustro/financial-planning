@@ -20,6 +20,7 @@
       <app-budget [budget]="budget"
                   [totalBudget]="totalBudget"
                   (addBudgetItem)="addBudgetItem()"
+                  (deleteBudgetItem)="deleteFinance($event)"
                   (saveBudget)="saveBudget()"></app-budget>
     </div>
   </div>

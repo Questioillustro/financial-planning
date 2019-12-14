@@ -12,6 +12,7 @@ export class BudgetComponent implements OnInit {
 
   @Output() addBudgetItem = new EventEmitter();
   @Output() saveBudget = new EventEmitter();
+  @Output() deleteBudgetItem = new EventEmitter();
 
   constructor() { }
 
@@ -24,5 +25,9 @@ export class BudgetComponent implements OnInit {
 
   save() {
     this.saveBudget.next();
+  }
+
+  delete(budget: any) {
+    this.deleteBudgetItem.next(budget);
   }
 }

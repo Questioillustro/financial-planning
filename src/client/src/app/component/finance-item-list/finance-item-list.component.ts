@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-finance-item-list',
@@ -13,13 +13,15 @@ export class FinanceItemListComponent implements OnInit {
   @Input() subTitle: string = '';
   @Input() items: any = [];
 
+  @Output() deleteItem = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
   delete(item: any) {
-
+    this.deleteItem.next(item);
   }
 
   add() {

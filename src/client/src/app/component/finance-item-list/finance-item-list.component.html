@@ -21,25 +21,8 @@
 
       <mat-card-content class="finance-item-card" fxLayout="column" fxLayoutGap="10px">
         <div class="finance-item" fxLayout="row" fxLayoutGap="10px" *ngFor="let item of items">
-          <mat-form-field>
-            <mat-label>
-              <span>{{item.label}}</span>
-            </mat-label>
-
-            <div fxLayout="row">
-              <div fxFlex="40">
-                <input matInput [(ngModel)]="item.accrualAmount"
-                       type="text"
-                       required
-                       placeholder=""/>
-              </div>
-            </div>
-          </mat-form-field>
-
-          <div fxFlex="10" class="delete">
-            <i class="fas fa-trash-alt"
-               (click)="delete(item)"></i>
-          </div>
+          <app-finance-item [item]="item"
+                            (deleteItem)="delete($event)"></app-finance-item>
         </div>
       </mat-card-content>
 
