@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-debt',
@@ -9,12 +10,14 @@ export class DebtComponent implements OnInit {
 
   @Input() amortizations: any = [];
 
+  @Output() updatePayment = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
   update() {
-
+    this.updatePayment.next(_.map(this.amortizations, 'loan'));
   }
 }

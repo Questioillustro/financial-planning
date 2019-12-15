@@ -4,7 +4,6 @@ import com.brewster.financialplanning.calc.AmortizationCalculations;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Calendar;
 import java.util.List;
 
 @Data
@@ -12,5 +11,5 @@ import java.util.List;
 public class AmortizationSchedule {
     private FinanceEntity loan;
     private List<AmortizationCalculations.SnapShot> snapshots;
-    private Calendar payoffDate;
+    private String payoffDate;
 }

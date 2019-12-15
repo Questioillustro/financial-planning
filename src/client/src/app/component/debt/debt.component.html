@@ -24,11 +24,25 @@
         </mat-form-field>
       </div>
 
+      <div fxFlex="25">
+        <mat-form-field fxFlex="100">
+          <mat-label>
+            Payment Date
+          </mat-label>
+
+          <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="amortization.loan.paymentDate">
+          <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+          <mat-datepicker #myDatepicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
       <div class="debt-final-payment">
         <mat-label>
           Payoff Date
         </mat-label>
-        {{ amortization.payoffDate }}
+        <div>
+          {{ amortization.payoffDate }}
+        </div>
       </div>
     </div>
   </mat-card-content>

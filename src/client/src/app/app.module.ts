@@ -24,6 +24,8 @@ import { FinanceItemListComponent } from './component/finance-item-list/finance-
 import { FinanceItemComponent } from './component/finance-item-list/finance-item/finance-item.component';
 import {MatSelectModule} from "@angular/material/select";
 import { DebtComponent } from './component/debt/debt.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -53,7 +55,9 @@ import { DebtComponent } from './component/debt/debt.component';
     MatExpansionModule,
     MatListModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

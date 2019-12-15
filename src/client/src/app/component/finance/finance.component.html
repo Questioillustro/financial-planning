@@ -33,7 +33,8 @@
   </div>
 
   <div id="debt-management" fxFlex="20">
-    <app-debt [amortizations]="amortizations"></app-debt>
+    <app-debt [amortizations]="amortizations"
+              (updatePayment)="saveFinances($event)"></app-debt>
   </div>
 
   <div id="accounts-col" fxFlex="25" fxLayout="column" fxLayoutGap="20px">

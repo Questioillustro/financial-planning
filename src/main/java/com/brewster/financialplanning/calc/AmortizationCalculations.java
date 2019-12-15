@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -37,7 +38,7 @@ public class AmortizationCalculations {
             snapshots.add(ss);
 
             if (principle <= 0.0) {
-                schedule.setPayoffDate(snapShotDate);
+                schedule.setPayoffDate(ss.getDate());
             }
         }
         schedule.setLoan(loan);
@@ -48,8 +49,13 @@ public class AmortizationCalculations {
     @Data
     @NoArgsConstructor
     public class SnapShot {
-        Calendar date;
+        String date;
         double principle;
+
+        public void setDate(Calendar date) {
+            SimpleDateFormat format1 = new SimpleDateFormat("MM-dd-yyyy");
+            this.date = format1.format(date.getTime());
+        }
     }
 
 }
