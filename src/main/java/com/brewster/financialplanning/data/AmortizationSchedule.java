@@ -12,4 +12,5 @@ public class AmortizationSchedule {
     private FinanceEntity loan;
     private List<AmortizationCalculations.SnapShot> snapshots;
     private String payoffDate;
+    private double interestPaid;
 }

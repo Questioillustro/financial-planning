@@ -9,7 +9,10 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
+import static java.util.Calendar.*;
 
 @Component
 public class AmortizationCalculations {
@@ -18,7 +21,13 @@ public class AmortizationCalculations {
         List<SnapShot> snapshots = new ArrayList<>();
 
         double principle = loan.getBalance();
-        Calendar snapShotDate = Calendar.getInstance();
+        Calendar snapShotDate = getInstance();
+
+        if (loan.getPaymentDate() == null) {
+            loan.setPaymentDate(new Date());
+        }
+
+        snapShotDate.setTime(loan.getPaymentDate());
 
         SnapShot start = new SnapShot();
         start.setPrinciple(principle);
@@ -26,14 +35,19 @@ public class AmortizationCalculations {
         snapshots.add(start);
 
         AmortizationSchedule schedule = new AmortizationSchedule();
+        schedule.setInterestPaid(0.0);
 
         while (principle > 0.0) {
             SnapShot ss = new SnapShot();
-            principle += (principle * (loan.getAccrualAmount() / 100)) / 12;
+
+            double interest = principle * (loan.getAccrualAmount() / 100) / 12;
+            schedule.setInterestPaid( schedule.getInterestPaid() + interest );
+            principle += interest;
+
             principle -= loan.getPayment();
             ss.setPrinciple(principle);
 
-            snapShotDate.add(Calendar.MONTH, 1);
+            snapShotDate.add(MONTH, 1);
             ss.setDate(snapShotDate);
             snapshots.add(ss);
 
@@ -41,6 +55,7 @@ public class AmortizationCalculations {
                 schedule.setPayoffDate(ss.getDate());
             }
         }
+        schedule.setInterestPaid( Math.round( schedule.getInterestPaid() ) );
         schedule.setLoan(loan);
         schedule.setSnapshots(snapshots);
         return schedule;

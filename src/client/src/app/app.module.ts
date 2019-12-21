@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {FlexModule} from "@angular/flex-layout";
 import { ExpenseComponent } from './component/expense/expense.component';
@@ -57,7 +57,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatTableModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

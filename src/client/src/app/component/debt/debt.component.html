@@ -6,11 +6,11 @@
 
   <mat-card-content>
     <div class="debt-loan-list" *ngFor="let amortization of amortizations" fxLayout="row" fxLayoutGap="10px">
-      <div class="debt-label" fxFlex="25" fxLayoutAlign="start center">
+      <div class="debt-label" fxFlex="20" fxLayoutAlign="start center">
         {{ amortization.loan.label }}
       </div>
 
-      <div fxFlex="15">
+      <div fxFlex="10">
         <mat-form-field fxFlex="100">
           <mat-label>
             <span>Payment</span>
@@ -42,6 +42,16 @@
         </mat-label>
         <div>
           {{ amortization.payoffDate }}
+        </div>
+      </div>
+
+      <div class="debt-interest-paid">
+        <mat-label>
+          Interest Paid
+        </mat-label>
+        <div>
+          <i class="fas fa-dollar-sign"></i>
+          {{ amortization.interestPaid }}
         </div>
       </div>
     </div>

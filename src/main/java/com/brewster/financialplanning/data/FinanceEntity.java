@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Calendar;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -25,7 +25,7 @@ public class FinanceEntity {
 
     private Double payment;
 
-    private Calendar paymentDate;
+    private Date paymentDate;
 
     private String accrualType;
 
