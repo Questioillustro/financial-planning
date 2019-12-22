@@ -26,6 +26,8 @@ import {MatSelectModule} from "@angular/material/select";
 import { DebtComponent } from './component/debt/debt.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { DataChartComponent } from './component/data-chart/data-chart.component';
+import {ChartService} from "./component/data-chart/chart-service";
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     AccountComponent,
     FinanceItemListComponent,
     FinanceItemComponent,
-    DebtComponent
+    DebtComponent,
+    DataChartComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatNativeDateModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{provide: Window, useValue: window}, ChartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
